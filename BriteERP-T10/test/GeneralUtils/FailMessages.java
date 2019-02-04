@@ -1,4 +1,4 @@
-package GeneralUtils;
+package test.GeneralUtils;
 
 public class FailMessages {
 	

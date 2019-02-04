@@ -1,4 +1,4 @@
-package GeneralUtils;
+package test.GeneralUtils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,8 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-import PageUtils.OodooPage;
-import PageUtils.SignInPage;
+import test.PageUtils.OodooPage;
+import test.PageUtils.SignInPage;
 
 public class TestBase{
 	protected static WebDriver driver;

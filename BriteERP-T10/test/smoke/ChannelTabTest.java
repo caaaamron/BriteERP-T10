@@ -1,12 +1,12 @@
-package smoke;
+package test.smoke;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import GeneralUtils.Constants;
-import GeneralUtils.TestBase;
-import PageUtils.ChannelsTabPage;
-import PageUtils.DiscussPage;
+import test.GeneralUtils.Constants;
+import test.GeneralUtils.TestBase;
+import test.PageUtils.ChannelsTabPage;
+import test.PageUtils.DiscussPage;
 
 public class ChannelTabTest extends TestBase{
 	

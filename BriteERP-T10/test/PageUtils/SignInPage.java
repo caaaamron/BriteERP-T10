@@ -1,13 +1,13 @@
-package PageUtils;
+package test.PageUtils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import GeneralUtils.Constants;
-import GeneralUtils.Driver;
-import GeneralUtils.FailMessages;
+import test.GeneralUtils.Constants;
+import test.GeneralUtils.Driver;
+import test.GeneralUtils.FailMessages;
 
 public class SignInPage {
 	private static WebDriver driver;

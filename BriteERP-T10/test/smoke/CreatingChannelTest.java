@@ -1,14 +1,14 @@
-package smoke;
+package test.smoke;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
-import GeneralUtils.Constants;
-import GeneralUtils.TestBase;
-import PageUtils.ChannelsTabPage;
-import PageUtils.DiscussPage;
+import test.GeneralUtils.Constants;
+import test.GeneralUtils.TestBase;
+import test.PageUtils.ChannelsTabPage;
+import test.PageUtils.DiscussPage;
 
 public class CreatingChannelTest extends TestBase{
 	private static Faker faker;
