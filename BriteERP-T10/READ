@@ -1,0 +1,44 @@
+Tools We Need To Use
+== ===================
+Maven
+TestNG
+Page Object Model
+Selenium
+
+How our framework will be organized
+=============
+* Tests
+	- Functional Tests
+	- Smoke Tests
+	- Regression Tests
+* Utilities
+	- PagesUtils
+	- GeneralUtilities
+
+Git/Github 
+===========
+1) I will push my code to the main repository
+
+2) You guys will pull my code and begin automating your tests and created any utilities (page object models) that you need to work on your page
+
+3) Once you finish a test push it back to the repository. DO NOT do all your test and then push all of them. Once you finish one test push it, 
+so that way if there is an error in that one test you can fix it faster than trying to fix 10 test cases at once.
+
+4) We must use all the tools that they have given us to use because it is a requirement
+
+5) Also you need to create 3 smoke tests atleast that will test main functionalities if one of your previous tests that you made does that already 
+include that in the smoke tests folder
+
+
+
+HOW TO PULL AND PUSH IN GITHUB 
+======================
+
+When you have your intellij open, open the command line and type 
+
+git clone <link I'm going to provie you with> and that will remotely bring the project to your intellij
+
+To push changes:
+Once you've made a change to it use the git as you did before go to command line and type git commit -m "Your message description"
+
+PLEASE LET US KNOW ONCE YOU MAKE ANY CHANGES
