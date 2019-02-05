@@ -5,10 +5,10 @@ import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
-import test.GeneralUtils.Constants;
-import test.GeneralUtils.TestBase;
-import test.PageUtils.ChannelsTabPage;
-import test.PageUtils.DiscussPage;
+import utilities.GeneralUtils.Constants;
+import utilities.GeneralUtils.TestBase;
+import utilities.PageUtils.ChannelsTabPage;
+import utilities.PageUtils.DiscussPage;
 
 public class ChannelsTest extends TestBase{
 	private static Faker faker;
