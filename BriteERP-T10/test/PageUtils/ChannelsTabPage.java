@@ -78,13 +78,17 @@ public class ChannelsTabPage {
 		return false;
 	}
 
-	public static void goToChannelsHome() {
+	public static void goToChannelsEnvironment() {
 		try {
 			publicChannelsLink.click();
 			Thread.sleep(2000);
 		} catch (Exception e) {
 			FailMessages.fail(e);
 		}
+	}
+
+	public static void goToDiscussEnvironment(){
+		driver.navigate().to(Constants.DISCUSS_ENVI);
 	}
 
 	public static String getUrl() {
