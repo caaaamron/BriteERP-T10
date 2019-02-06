@@ -53,6 +53,9 @@ public class DiscussPage {
 	@FindAll({ @FindBy(xpath = "//div[@class = 'o_mail_chat_channel_item  o_unread_message ']") })
 	private static List<WebElement> unreadChannels;
 
+	@FindBy(xpath="//span[@data-type='dm']")
+	private static WebElement dmAdd;
+
 	public static void search(String text) {
 		searchBox.sendKeys(text);
 		searchBox.submit();
@@ -142,6 +145,10 @@ public class DiscussPage {
 				FailMessages.fail(e);
 			}
 		}
+	}
+
+	public static void addDm(){
+		dmAdd.click();
 	}
 
 }
