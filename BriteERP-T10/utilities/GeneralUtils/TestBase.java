@@ -27,6 +27,11 @@ public class TestBase{
 		
 		log.info("Test Base === Clicking login");
 		SignInPage.login();
+		try {
+            Thread.sleep(3000);
+        }catch(Exception e){
+		    e.printStackTrace();
+        }
 	}
 	
 	@AfterClass

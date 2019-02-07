@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.GeneralUtils.Driver;
 import utilities.GeneralUtils.FailMessages;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DiscussPage {
@@ -44,8 +47,8 @@ public class DiscussPage {
 	@FindBy(className = "ui-menu-item")
 	private static WebElement channelHiddenCreate;
 
-//	@FindBy(xpath = "//div[@class = 'o_mail_chat_channel_item o_active']")
-//	private static WebElement activeChannel;
+	@FindAll( {@FindBy(className = "o_channel_name")})
+	private static List<WebElement> channelNames;
 
 	@FindAll({ @FindBy(className = "o_mail_chat_channel_item ") })
 	private static List<WebElement> readChannels;
@@ -151,4 +154,28 @@ public class DiscussPage {
 		dmAdd.click();
 	}
 
+    public static void removeChannel(String channel){
+
+	    try {
+            System.out.println("Removing channel: " + channel);
+            String html = driver.findElement(By.xpath("//div[@title = '" + channel + "']")).getAttribute("innerHTML");
+            int id = html.indexOf("data-channel-id=");
+
+            String id2 = html.substring(id);
+            int id3 = id2.indexOf(" ");
+
+            id2 = id2.replace(id2.substring(id3), "").trim();
+            int id4 = id2.indexOf("\"") + 1;
+
+            String id5 = id2.substring(id4, id2.length() - 1);
+            Integer finalId = Integer.valueOf(id5);
+
+            WebElement remove = driver.findElement(By.xpath("//span[@data-channel-id = '" + finalId + "']"));
+            remove.click();
+            System.out.println(channel + " - Removed");
+        }catch(Exception e){
+            System.out.println("Channel not removed");
+	        e.printStackTrace();
+        }
+    }
 }
