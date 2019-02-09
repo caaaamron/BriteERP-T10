@@ -6,12 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import org.testng.asserts.SoftAssert;
 import utilities.PageUtils.OodooPage;
 import utilities.PageUtils.SignInPage;
 
 public class TestBase{
 	protected static WebDriver driver;
 	private static final Logger log = LogManager.getLogger();
+	protected static SoftAssert soft = new SoftAssert();
 
 	@BeforeClass
 	public void beforeClass() {
@@ -37,6 +39,7 @@ public class TestBase{
 	@AfterClass
 	public void afterClass() throws InterruptedException {
 		log.info("Test Base === Closing driver");
+		soft.assertAll();
 		Thread.sleep(5000);
 //		Driver.close();
 	}
