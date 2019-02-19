@@ -1,10 +1,13 @@
 package utilities.PageUtils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.GeneralUtils.Constants;
 import utilities.GeneralUtils.Driver;
 import utilities.GeneralUtils.FailMessages;
@@ -13,9 +16,11 @@ import java.util.List;
 
 public class ChannelsTabPage {
 	private static WebDriver driver;
+	private static WebDriverWait wait;
 
 	static {
 		driver = Driver.setUp();
+		wait = new WebDriverWait(driver, 10);
 		PageFactory.initElements(driver, ChannelsTabPage.class);
 	}
 
@@ -62,9 +67,32 @@ public class ChannelsTabPage {
 		}
 	}
 
+	public static void removeChannel(String name){
+        try {
+            WebElement channel =
+                    driver.findElement(By.xpath("//span[text() = '" + name + "']//parent::h4//parent::div//parent::div[@class = \"oe_module_vignette oe_kanban_global_click o_kanban_record\"]"));
+                    channel.click();
+        }catch (Exception e){
+            FailMessages.fail(e);
+            e.printStackTrace();
+        }
+	}
+
+	public static void joinChannel(String name) {
+        try {
+            WebElement temp = driver.findElement(By.xpath("//h4[@class = 'o_kanban_record_title']//span[text() = '" + name + "']//parent::h4//following-sibling::button"));
+            temp.click();
+            System.out.println("Channel: " + name + " clicking");
+        }catch (Exception e){
+            FailMessages.fail(e);
+        }
+    }
+
+
+
 	public static boolean hasAllChannels() {
 
-		if (getUrl().equals(Constants.CHANNELTAB_ENVI)) {
+		if (getUrl().equalsIgnoreCase(Constants.CHANNELTAB_ENVI) || getUrl().equalsIgnoreCase(Constants.CHANNELTAB_ENVI2)) {
 			int count = 0;
 			for (WebElement each : channels) {
 				if (each.isDisplayed())
@@ -80,7 +108,7 @@ public class ChannelsTabPage {
 	public static void goToChannelsEnvironment() {
 		try {
 			publicChannelsLink.click();
-			Thread.sleep(2000);
+			wait.until(ExpectedConditions.urlContains("mail.channel"));
 		} catch (Exception e) {
 			FailMessages.fail(e);
 		}
@@ -92,5 +120,17 @@ public class ChannelsTabPage {
 
 	public static String getUrl() {
 		return driver.getCurrentUrl();
+	}
+
+	public static String getTitle(){
+		return driver.getTitle();
+	}
+
+	public static boolean hasCorrectUrl(){
+        System.out.println("ChannelTabPage Current URL: "  + driver.getCurrentUrl());
+		if(driver.getCurrentUrl().contains("mail.channel")){
+		    return true;
+        }
+		return false;
 	}
 }

@@ -22,8 +22,8 @@ public class ChannelsTest extends TestBase{
 		DiscussPage.clickChannelsTab();
 
 		//Verifying clicking action brings to correct environment
-		System.out.println("Verifying correct url is brought");
-		Assert.assertEquals(ChannelsTabPage.getUrl(), Constants.CHANNELTAB_ENVI);
+		System.out.println("Verifying title");
+		Assert.assertEquals(ChannelsTabPage.getTitle(), "Public Channels - Odoo");
 
 		//Verifying that all channels are displayed to the user
 		System.out.println("Verifying all channels are present");
@@ -35,7 +35,7 @@ public class ChannelsTest extends TestBase{
 	}
 
 	@Test(priority = 2, dependsOnMethods = { "clickingTest" })
-	public void discussEnvironmentTest() {
+	public void discussEnvironmentAddChannelTest() {
 		
 		//Initializing faker and making random fake name
 		faker = new Faker();
@@ -51,8 +51,8 @@ public class ChannelsTest extends TestBase{
 		
 	}
 	
-	@Test(dependsOnMethods = { "discussEnvironmentTest" })
-	public void channelEnvironmentTest() {
+	@Test(dependsOnMethods = { "discussEnvironmentAddChannelTest" })
+	public void channelEnvironmentAddChannelTest() {
 		
 		//Faker to make random names
 		randomName = faker.funnyName().name();
@@ -62,7 +62,7 @@ public class ChannelsTest extends TestBase{
 		
 		//Verifying the correct url is brought
 		System.out.println("Verifying channels tab url is correct");
-		Assert.assertEquals(ChannelsTabPage.getUrl(), Constants.CHANNELTAB_ENVI);
+		Assert.assertTrue(ChannelsTabPage.hasCorrectUrl());
 		
 		//Testing adding a new channel
 		ChannelsTabPage.addChannel(randomName);
@@ -71,9 +71,9 @@ public class ChannelsTest extends TestBase{
 		ChannelsTabPage.goToChannelsEnvironment();
 		
 		//Verifying channel environemnt is current url
-		Assert.assertEquals(ChannelsTabPage.getUrl(), Constants.CHANNELTAB_ENVI);
+		Assert.assertTrue(ChannelsTabPage.hasCorrectUrl());
 		
 		//Verifying channel was created
-		ChannelsTabPage.containsChannel(randomName);
+		Assert.assertFalse(ChannelsTabPage.containsChannel(randomName));
 	}
 }

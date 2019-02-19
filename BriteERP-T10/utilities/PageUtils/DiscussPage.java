@@ -49,6 +49,7 @@ public class DiscussPage {
 	@FindBy(className = "ui-menu-item")
 	private static WebElement channelHiddenCreate;
 
+
 	@FindAll( {@FindBy(className = "o_channel_name")})
 	private static List<WebElement> channelNames;
 
@@ -90,10 +91,11 @@ public class DiscussPage {
 	}
 
 	public static void clickChannelsTab() {
+	    WebDriverWait wait = new WebDriverWait(driver, 10);
 		try {
 			System.out.println("Clicking channels tab");
 			channelsTab.click();
-			Thread.sleep(2000);
+			wait.until(ExpectedConditions.urlContains("mail.channel"));
 		} catch (Exception e) {
 			FailMessages.fail(e);
 		}
@@ -137,7 +139,7 @@ public class DiscussPage {
 	public static void addChannel(String name) {
 		if (!(containsChannel(name))) {
 			try {
-				System.out.println("Adding channel");
+				System.out.println("Adding channel: " + name);
 				channelAdd.click();
 				channelAddName.sendKeys(name);
 				channelHiddenCreate.click();
@@ -146,6 +148,8 @@ public class DiscussPage {
 			} catch (Exception e) {
 				FailMessages.fail(e);
 			}
+		}else{
+			System.out.println("Channel: " + name + " not added.");
 		}
 	}
 
@@ -170,7 +174,6 @@ public class DiscussPage {
 
             WebElement remove = driver.findElement(By.xpath("//span[@data-channel-id = '" + finalId + "']"));
             remove.click();
-            System.out.println(channel + " - Removed");
         }catch(Exception e){
             System.out.println("Channel not removed");
 	        e.printStackTrace();
