@@ -7,7 +7,7 @@ public class PropertyConfig {
 	protected static Properties properties;
 	
 	static {
-		String path = "C:\\Users\\Alienware Laptop\\IdeaProjects\\BriteERP-T10\\BriteERP-T10\\properties\\config.properties";
+		String path = "C:\\Users\\men25\\IdeaProjects\\BriteERP-T10\\BriteERP-T10\\properties\\config.properties";
 	
 		try {
 			FileInputStream fileInputStream = new FileInputStream(path);

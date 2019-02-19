@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.GeneralUtils.TestBase;
+import utilities.PageUtils.DirectMessagesPage;
 import utilities.PageUtils.DiscussPage;
 
 public class DirectMessageFieldDropDownTest extends TestBase {
@@ -15,8 +16,12 @@ public class DirectMessageFieldDropDownTest extends TestBase {
 //    WebElement userNameField;
 
     @Test
-    public void test() {
-        DiscussPage.addDm();
+    public static void test() throws InterruptedException {
+        DirectMessagesPage.dmAdd.click();
+        Thread.sleep(3000);
+        boolean result = DirectMessagesPage.dmField.isDisplayed();
+
+        Assert.assertTrue(result);
 
     }
 }

@@ -14,6 +14,8 @@ import utilities.GeneralUtils.FailMessages;
 import java.util.Arrays;
 import java.util.List;
 
+import static utilities.PageUtils.DirectMessagesPage.dmAdd;
+
 public class DiscussPage {
 	private static WebDriver driver;
 	private static List<String> allChannelsName;
@@ -55,9 +57,6 @@ public class DiscussPage {
 
 	@FindAll({ @FindBy(xpath = "//div[@class = 'o_mail_chat_channel_item  o_unread_message ']") })
 	private static List<WebElement> unreadChannels;
-
-	@FindBy(xpath="//span[@data-type='dm']")
-	private static WebElement dmAdd;
 
 	public static void search(String text) {
 		searchBox.sendKeys(text);
@@ -150,8 +149,7 @@ public class DiscussPage {
 		}
 	}
 
-	public static void addDm(){
-		dmAdd.click();
+	public static void addDm(){ dmAdd.click();
 	}
 
     public static void removeChannel(String channel){
